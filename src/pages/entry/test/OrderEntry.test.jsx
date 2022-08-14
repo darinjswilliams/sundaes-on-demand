@@ -7,8 +7,7 @@ const setupRTL = () => {
     render(<OrderEntry/>);
 }
 
-it('handles error for scoops and toppings routes', async () => {
-    //need to override handlers from server
+beforeEach( () =>
     server.resetHandlers(
         rest.get('http://locaohost:3030/scoops', (req, res, ctx) =>
             res(ctx.status(500))
@@ -16,7 +15,12 @@ it('handles error for scoops and toppings routes', async () => {
         rest.get('http://localhost:3030/toppings', (req, res, ctx) =>
             res(ctx.status(500))
         )
-    );
+    )
+);
+
+it('handles error for scoops and toppings routes', async () => {
+    //need to override handlers from server
+
 
     //setup
     setupRTL();
