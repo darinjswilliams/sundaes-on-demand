@@ -1,6 +1,5 @@
 import {render, screen} from "../../../test-utils/testing-library-utils";
 import {Options} from '../Options';
-import {OrderDetailsProvider} from "../../../contexts/OrderDetails";
 
 const setupScoopsRTL = (options) => {
     render(<Options optionType={options}/>);

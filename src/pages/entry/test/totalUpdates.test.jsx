@@ -1,10 +1,9 @@
-import {render, screen, waitFor} from "@testing-library/react";
+import {render, screen} from "../../../test-utils/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 import {Options} from "../Options";
-import {OrderDetailsProvider} from "../../../contexts/OrderDetails";
 
 const setupRTL = (option) => {
-    render(<Options optionType={option}/>, {wrapper: OrderDetailsProvider});
+    render(<Options optionType={option}/>);
 }
 
 it('update subtotal when scoops change', async () => {
