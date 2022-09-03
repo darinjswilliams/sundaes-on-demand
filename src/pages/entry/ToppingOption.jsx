@@ -1,6 +1,8 @@
-import {Col} from "react-bootstrap";
+import {Col, Form, InputGroup, Row} from "react-bootstrap";
+import {useState} from "react";
 
-export const ToppingOption = ({name, imagePath}) => {
+export const ToppingOption = ({name, imagePath, updateItemCount}) => {
+
     return (<div>
         <Col xs={12} sm={6} md={4} lg={3} style={{textAlign: 'center'}}>
             <img
@@ -8,6 +10,16 @@ export const ToppingOption = ({name, imagePath}) => {
                 src={`http://localhost:3030/${imagePath}`}
                 alt={`${name} topping`}
             />
+            <Form.Group
+                controlId={`${name}-topping-checkbox`}>
+                    <Form.Check
+                        type="checkbox"
+                        onChange={(e) => {
+                            updateItemCount(name, e.target.checked ? 1 : 0);
+                        }}
+                        label={name}
+                        />
+            </Form.Group>
         </Col>
     </div>)
 }
