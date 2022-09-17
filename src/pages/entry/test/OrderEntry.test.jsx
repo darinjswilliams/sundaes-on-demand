@@ -4,7 +4,7 @@ import {rest} from "msw";
 import {server} from "../../../mocks/server";
 
 const setupRTL = () => {
-    render(<OrderEntry/>);
+    render(<OrderEntry setOrderPhase={jest.fn()}/>);
 }
 
 beforeEach( () =>
@@ -17,6 +17,8 @@ beforeEach( () =>
         )
     )
 );
+
+
 
 it('handles error for scoops and toppings routes', async () => {
     //need to override handlers from server

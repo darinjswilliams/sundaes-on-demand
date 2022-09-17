@@ -18,7 +18,15 @@ export const handlers = [
                 {name: 'M&Ms', imagePath: '/images/m-and-ms.png'},
                 {name: 'Hot fudge', imagePath: '/images/hot-fudge.png'},
                 {name: 'Gummi bears', imagePath: '/images/gummi-bears.png'},
+                {name: 'Mochi', imagePath: '/images/mochi.png'},
             ])
         );
-    })
+    }),
+
+    rest.post('http://localhost:3030/order', (req, res, ctx) => {
+        return res(
+            ctx.json({ orderNumber: 12345678})
+        );
+    }),
+
 ];

@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Button, Form, Popover, OverlayTrigger} from "react-bootstrap";
 
-export const SummaryForm = () => {
+export const SummaryForm = ({setOrderPhase}) => {
     const [disable, setDisable] = useState(false)
 
     const popover = (
@@ -17,15 +17,21 @@ export const SummaryForm = () => {
             I agree to
             <OverlayTrigger placement="right"
                             overlay={popover}
-                         >
+            >
             <span style={{color: 'blue'}}>Terms and Conditions</span>
             </OverlayTrigger>
         </span>
     );
 
+    const handleSubmit = ({event}) => {
+        event.preventDefault();
+        //pass along to the next phase
+        //the next page will handle submitting order from context
+        setOrderPhase('completed');
+    }
 
     return (
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Form.Group controlId="terms-and-conditions">
 
                 <Form.Check
